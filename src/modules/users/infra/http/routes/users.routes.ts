@@ -1,8 +1,8 @@
-import { Router, request } from 'express';
+import { Router } from 'express';
 import multer from 'multer';
-import uploadConfig from '../config/upload';
-import CreateUserService from '../services/CreateUserService';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+import uploadConfig from '@config/upload';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRouter = Router();
@@ -23,7 +23,6 @@ usersRouter.post('/', async (request, response) => {
   return response.json(user);
 });
 
-//atualizando e deletando avatar antigo .
 usersRouter.patch(
   '/avatar',
   ensureAuthenticated,
